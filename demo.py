@@ -30,4 +30,4 @@ if bt:
         caption = result.movie_name.tolist()
         # st.dataframe(images)
         for idx, image in enumerate(images):
-            next(cols).image(image, width=200, caption=caption[idx])
+            next(cols).image(image, width=300, caption=caption[idx])
