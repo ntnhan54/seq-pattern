@@ -30,4 +30,23 @@ if bt:
         caption = result.movie_name.tolist()
         # st.dataframe(images)
         for idx, image in enumerate(images):
-            next(cols).image(image, width=300, caption=caption[idx])
+            next(cols).image(image, width=280, caption=caption[idx])
+
+bt2 = st.button('Sequential Pattern with length 3')
+if bt2:
+    seq_df = pd.read_pickle('sequential_pattern.pkl')
+    ptt_len = seq_df.pattern.apply(lambda x: len(x))
+    res = seq_df[ptt_len > 2]
+
+    pattern_list = res.pattern.tolist()
+    movies_df = pd.read_pickle('movies.pkl')
+
+    for pattern in pattern_list:
+        cols = cycle(st.columns(len(pattern))) # st.columns here since it is out of beta at the time I'm writing this
+        result = movies_df.loc[pattern]
+
+        images = result.urls.tolist()
+        caption = result.movie_name.tolist()
+        # st.dataframe(images)
+        for idx, image in enumerate(images):
+            next(cols).image(image, width=280, caption=caption[idx])
