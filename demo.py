@@ -9,7 +9,7 @@ st.header("Sequential Pattern Demo")
 
 values = st.slider(
     'Select a range of pattern index',
-    0, 1000, (0, 50))
+    0, 1300, (0, 50))
 st.write('Values:', values)
 
 bt = st.button('Generate')
